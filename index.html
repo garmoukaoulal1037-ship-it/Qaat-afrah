@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f4c4a">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>قاعات الأفراح – احجز قاعتك</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#f7f5fa;--card:#fff;--ink:#241a2b;--mut:#6d6477;--pri:#0f4c4a;--onpri:#fff;--gold:#b9852c;--line:#e6e0ec;--g:#2f9e63;--o:#e08a1e;--r:#d0453f;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17121c;--card:#221a29;--ink:#f2edf6;--mut:#a99fb3;--pri:#5fc4bd;--onpri:#10201f;--gold:#e0b25a;--line:#382d42;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17121c;--card:#221a29;--ink:#f2edf6;--mut:#a99fb3;--pri:#5fc4bd;--onpri:#10201f;--gold:#e0b25a;--line:#382d42;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 85% -5%,rgba(224,86,143,.22),transparent 45%),radial-gradient(circle at 5% 30%,rgba(95,196,189,.18),transparent 40%),var(--bg);background-attachment:fixed;color:var(--ink);font-family:Cairo,Tahoma,sans-serif;line-height:1.6}
+.w{max-width:760px;margin:0 auto;padding:16px}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+h1{font-size:1.5rem;margin:0;font-weight:800;color:var(--gold);background:linear-gradient(90deg,var(--gold),#e0568f);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#sp{position:fixed;inset:0;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(160deg,#0f4c4a,#5b2a5e 70%,#e0568f);color:#fff;font-weight:800;font-size:1.7rem;transition:opacity .6s,visibility .6s}
+#sp.o{opacity:0;visibility:hidden}
+#sp:before{content:"";position:absolute;width:170px;height:170px;border:3px solid rgba(255,255,255,.5);border-radius:50%;animation:rp 1.4s ease-out infinite}
+@keyframes rp{from{transform:scale(.6);opacity:1}to{transform:scale(1.7);opacity:0}}
+.hero{border-radius:24px;padding:28px 20px;text-align:center;color:#fff;background:linear-gradient(150deg,#0f4c4a,#5b2a5e 70%,#e0568f);margin-bottom:12px}.hero h2{margin:8px 0;font-size:1.4rem}.hero p{margin:0;opacity:.9}.lg0{font-size:2.6rem}
+.rg{font-size:3.6rem;animation:pop 1s ease-in-out infinite alternate}
+#sp b{animation:up .9s ease both}
+@keyframes pop{from{transform:scale(.8) rotate(-10deg)}to{transform:scale(1.2) rotate(10deg)}}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rg,#sp b{animation:none}}
+h2{font-size:1.1rem;margin:16px 0 8px}
+.btn{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:8px 16px;cursor:pointer;transition:transform .15s}
+.btn:active{transform:scale(.95)}
+.btn.p{background:var(--pri);color:var(--onpri);border-color:var(--pri);font-weight:600}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+select,input,textarea{font:inherit;width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;margin:10px 0}
+.vid{height:110px;border-radius:10px;background:linear-gradient(135deg,var(--pri),#5b2a5e);display:grid;place-items:center;color:#fff;cursor:pointer;margin-bottom:10px;font-weight:600}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.mut{color:var(--mut);font-size:.9rem}
+.sq{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.sq div{aspect-ratio:1.5;border-radius:14px;padding:12px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
+.sq b{font-size:1.4rem;line-height:1.2}
+.sq .t{background:var(--pri);color:var(--onpri);grid-column:1/-1;aspect-ratio:auto;min-height:90px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal b{font-size:.8rem;color:var(--mut)}
+.d{aspect-ratio:1;border:0;border-radius:8px;font:inherit;color:#fff;cursor:pointer}
+.d.f{background:var(--g)}.d.p{background:var(--o)}.d.b{background:var(--r)}.d.x{background:var(--line);color:var(--mut)}
+.d.sel{outline:3px solid var(--gold);outline-offset:1px}
+.d:disabled{cursor:not-allowed;opacity:.85}
+.lg{display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem;margin:8px 0}
+.lg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-left:4px;vertical-align:middle}
+.pk{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line)}
+label{display:block;margin:8px 0 2px;font-size:.9rem}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:grid;place-items:center;padding:16px;z-index:9}
+.modal>div{background:var(--card);color:var(--ink);border-radius:14px;padding:18px;max-width:420px;width:100%}
+.tag{padding:2px 8px;border-radius:99px;color:#fff;font-size:.8rem}
+.ck{display:flex;flex-wrap:wrap;gap:6px}.ck label{display:flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:99px;padding:4px 10px;margin:0;cursor:pointer}.ck input{width:auto}
+.note{background:var(--line);border-radius:10px;padding:8px 12px;font-size:.85rem;margin:8px 0}
+@media print{body>*:not(#rc){display:none!important}#rc{position:static!important;background:#fff!important;display:block!important}#rc *{color:#000!important}.np{display:none!important}}
+</style>
+</head>
+<body>
+<div id="sp"><div class="rg">💍</div><b>قاعات الأفراح</b></div>
+<div class="w" id="app"><p class="mut">جاري التحميل…</p></div>
+<div id="rc"></div>
+<script>
+const W=["أدرار","الشلف","الأغواط","أم البواقي","باتنة","بجاية","بسكرة","بشار","البليدة","البويرة","تمنراست","تبسة","تلمسان","تيارت","تيزي وزو","الجزائر","الجلفة","جيجل","سطيف","سعيدة","سكيكدة","سيدي بلعباس","عنابة","قالمة","قسنطينة","المدية","مستغانم","المسيلة","معسكر","ورقلة","وهران","البيض","إليزي","برج بوعريريج","بومرداس","الطارف","تندوف","تيسمسيلت","الوادي","خنشلة","سوق أهراس","تيبازة","ميلة","عين الدفلى","النعامة","عين تموشنت","غرداية","غليزان"];
+const N=["قصر الأحلام","دار الأفراح","الياسمين","قاعة الأميرة","ليالي الورد","الماسة","قصر الزهراء","النجمة الذهبية","اللؤلؤة"];
+const MN=["جانفي","فيفري","مارس","أفريل","ماي","جوان","جويلية","أوت","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+const SH=[];W.forEach((w,i)=>{for(let k=0;k<3;k++)SH.push({id:"s"+(i*3+k),n:N[(i+k*4)%N.length],w,i,cap:300+((i*7+k*13)%6)*100,pr:80000+((i*7+k*13)%6)*10000,ph:"213555000000",sample:1})});
+const T=new Date();
+let S={v:"",wi:"",h:null,y:T.getFullYear(),m:T.getMonth(),sel:null},DB,me,demo=false,prof=null,HL=[],BK=[];
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fm=n=>Number(n||0).toLocaleString("fr-FR")+" دج";
+const ds=(y,m,d)=>y+"-"+String(m+1).padStart(2,"0")+"-"+String(d).padStart(2,"0");
+const TODAY=ds(T.getFullYear(),T.getMonth(),T.getDate());
+const $=id=>document.getElementById(id);
+const allH=()=>SH.concat(HL);
+const hallOf=id=>allH().find(x=>x.id==id);
+const bk=(h,d)=>BK.find(b=>b.id==h+"_"+d);
+const st=(h,d,day,m)=>{const b=bk(h,d);if(b)return b.st;if(String(h)[0]=="s"){const n=+String(h).slice(1),x=(n*31+day*17+m*7)%9;return x<2?"b":x==2?"p":"f"}return"f"};
+const wa=p=>{p=String(p).replace(/\D/g,"");return p[0]=="0"?"213"+p.slice(1):p};
+
+function shim(){const L=()=>{try{return JSON.parse(localStorage.getItem("dm")||"{}")}catch(e){return{}}},P=o=>{try{localStorage.setItem("dm",JSON.stringify(o))}catch(e){}},subs={},fire=c=>(subs[c]||[]).forEach(f=>f()),
+ snap=c=>{const o=L()[c]||{};return{docs:Object.keys(o).map(id=>({id,exists:true,data:()=>o[id]}))}},
+ doc=(c,id)=>({set:async d=>{const a=L();(a[c]=a[c]||{})[id]=d;P(a);fire(c)},update:async d=>{const a=L();a[c][id]={...a[c][id],...d};P(a);fire(c)},delete:async()=>{const a=L();delete(a[c]||{})[id];P(a);fire(c)},get:async()=>{const o=(L()[c]||{})[id];return{exists:!!o,data:()=>o}}});
+ return{collection:c=>({doc:id=>doc(c,id),onSnapshot:f=>{(subs[c]=subs[c]||[]).push(()=>f(snap(c)));f(snap(c))}})}}
+
+var PF=[];const ADM="ADMIN2026";
+const AC=()=>{try{return JSON.parse(localStorage.getItem("acc")||"{}")}catch(e){return{}}};
+const AS=a=>{try{localStorage.setItem("acc",JSON.stringify(a))}catch(e){}};
+async function hs(e,p){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(e+"|"+p));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+function auth(){
+ const m=S.am||"in",t=(k,x)=>`<button class="btn ${m==k?"p":""}" onclick="S.am='${k}';S.fe=null;auth()">${x}</button>`;let b;
+ if(m=="in")b=`<label>الإيميل</label><input id="em" type="email" autocomplete="email"><label>كلمة السر</label><input id="pw" type="password" autocomplete="current-password"><button class="btn p" style="margin-top:12px;width:100%" onclick="doIn()">دخول</button><p style="text-align:center"><a href="#" onclick="S.am='fg';auth();return false">نسيت كلمة السر؟</a></p>`;
+ else if(m=="up")b=`<label>نوع الحساب</label><select id="ro" onchange="$('ac').style.display=this.value=='admin'?'block':'none'"><option value="client">زبون (نحوس على قاعة)</option><option value="owner">صاحب قاعة</option><option value="admin">مشرف التطبيق</option></select><div id="ac" style="display:none"><label>رمز المشرف</label><input id="ac0" type="password"></div><label>الإيميل</label><input id="em" type="email" autocomplete="email"><label>كلمة السر</label><input id="pw" type="password" autocomplete="new-password"><label>أعد كتابة كلمة السر</label><input id="p2" type="password" autocomplete="new-password"><button class="btn p" style="margin-top:12px;width:100%" onclick="doUp()">إنشاء الحساب</button>`;
+ else b=S.fe?`<p>حساب: <b>${esc(S.fe)}</b></p><label>كلمة السر الجديدة</label><input id="pw" type="password"><label>أعدها</label><input id="p2" type="password"><button class="btn p" style="margin-top:12px;width:100%" onclick="fset()">حفظ</button>`:`<label>إيميل حسابك</label><input id="em" type="email"><button class="btn p" style="margin-top:12px;width:100%" onclick="fgo()">متابعة</button><div class="note">في النسخة الحقيقية يوصلك رابط إعادة التعيين على الإيميل. هنا (تجريبي) تبدل كلمة السر مباشرة.</div><p style="text-align:center"><a href="#" onclick="S.am='in';auth();return false">رجوع للدخول</a></p>`;
+ $("app").innerHTML=`<div class="hero"><div class="lg0">${logo()}</div><h2>قاعات الأفراح</h2><p>سجل دخولك أو أنشئ حسابك</p></div><div class="card"><div class="row" style="margin-bottom:8px">${t("in","دخول")}${t("up","إنشاء حساب")}</div>${m=="fg"?"":SB}${b}</div><p class="mut" style="text-align:center">نسخة تجريبية: الحسابات محفوظة في هذا الجهاز.</p>`}
+async function doIn(){const e=$("em").value.trim().toLowerCase(),a=AC()[e];if(!a||a.h!=await hs(e,$("pw").value)){alert("الإيميل أو كلمة السر غلط");return}sess(e)}
+const SB=`<button class="btn" style="width:100%;margin-bottom:8px" onclick="soc('google')">🇦 المتابعة بـ Google (Gmail)</button><button class="btn" style="width:100%;margin-bottom:8px" onclick="soc('apple')">🍎 المتابعة بـ Apple (iCloud)</button><div class="mut" style="text-align:center;margin:8px 0">أو</div>`;
+function soc(p){modal(`<h2>المتابعة بـ ${p=="google"?"Google":"Apple"}</h2><div class="note">تجريبي: الدخول الحقيقي بهذه الخدمات يحتاج خلفية. دخل إيميلك فقط.</div><input id="se" type="email" placeholder="${p=="google"?"name@gmail.com":"name@icloud.com"}"><button class="btn p" style="margin-top:10px;width:100%" onclick="soc2('${p}')">متابعة</button>`)}
+function soc2(p){const e=$("se").value.trim().toLowerCase(),ds2=p=="google"?["gmail.com","googlemail.com"]:["icloud.com","me.com","mac.com"];if(!/^\S+@\S+\.\S+$/.test(e)||!ds2.includes(e.split("@")[1])){alert("دخل إيميل من نفس الخدمة: "+ds2[0]);return}closeM();S.pre="";sess(e)}
+function sess(e){try{localStorage.setItem("de",e)}catch(x){}me={id:e,name:"",email:e};start()}
+async function doUp(){const e=$("em").value.trim().toLowerCase(),p=$("pw").value,ro=$("ro").value;
+ if(!/^\S+@\S+\.\S+$/.test(e)){alert("دخل إيميل صحيح");return}if(p.length<6){alert("كلمة السر 6 أحرف على الأقل");return}if(p!=$("p2").value){alert("كلمتا السر غير متطابقتين");return}
+ const A=AC();if(A[e]){alert("هذا الإيميل مسجل من قبل، ادخل مباشرة");return}
+ if(ro=="admin"&&$("ac0").value!=ADM){alert("رمز المشرف غلط");return}
+ A[e]={h:await hs(e,p),role:ro};AS(A);S.pre=ro;
+ if(ro=="admin"){try{await DB.collection("profiles").doc(e).set({role:"admin",name:"المشرف",phone:"",email:e})}catch(x){}}
+ sess(e)}
+function fgo(){const e=$("em").value.trim().toLowerCase();if(!AC()[e]){alert("ما كاينش حساب بهذا الإيميل");return}S.fe=e;auth()}
+async function fset(){const p=$("pw").value;if(p.length<6||p!=$("p2").value){alert("كلمة السر 6 أحرف على الأقل وتتطابق");return}const A=AC();A[S.fe].h=await hs(S.fe,p);AS(A);S.fe=null;S.am="in";alert("تبدلت كلمة السر، ادخل بها");auth()}
+function ad(){
+ const C=BK.filter(b=>b.st=="b"),P=BK.filter(b=>b.st=="p"),rev=C.reduce((n,b)=>n+(b.total||0),0),cl=PF.filter(p=>p.role=="client").length,ow=PF.filter(p=>p.role=="owner").length;
+ return `<div class="sq"><div class="t"><span>مشرف التطبيق</span><b>${HL.length} قاعة مسجلة</b><span>${ow} أصحاب قاعات · ${cl} زبائن</span></div><div><span class="mut">كل الحجوزات</span><b>${BK.length}</b></div><div><span class="mut">مؤكدة</span><b>${C.length}</b></div><div><span class="mut">في الانتظار</span><b style="color:var(--o)">${P.length}</b></div><div><span class="mut">قيمة المؤكدة</span><b>${fm(rev)}</b></div></div>
+ <h2>القاعات</h2>${HL.length?HL.map(h=>`<div class="card"><div class="row"><b>${esc(h.n)}</b><span class="mut">${esc(h.w)} · ${BK.filter(b=>b.hallId==h.id).length} حجز</span></div><div class="mut">${esc(h.id)}</div><button class="btn" style="margin-top:8px" onclick="dh('${esc(h.id)}')">حذف القاعة</button></div>`).join(""):`<p class="mut">ما كاين حتى قاعة مسجلة بعد.</p>`}
+ <h2>آخر الحجوزات</h2>${BK.slice().sort((a,b)=>a.date<b.date?1:-1).slice(0,8).map(b=>`<div class="card"><div class="row"><b>${esc(b.name)}</b><span class="tag" style="background:var(--${b.st=="b"?"g":"o"})">${b.st=="b"?"مؤكد":"انتظار"}</span></div><div class="mut">${esc((hallOf(b.hallId)||{}).n)} · ${b.date}</div></div>`).join("")}`}
+function dh(id){if(confirm("تحذف هذه القاعة؟"))DB.collection("halls").doc(id).delete().catch(()=>alert("ما قدرناش نحذفوها"))}
+async function boot(){
+ let d=null,u=null;
+ try{if(window.claude&&claude.use){d=await claude.use("db");u=await claude.use("user")}}catch(e){}
+ if(d)DB=d;
+ demo=!DB;if(!DB)DB=shim();let e="";try{e=localStorage.getItem("de")||""}catch(x){}if(e)me={id:e,name:"",email:e};else return auth();
+ start();
+}
+function login(){$("app").innerHTML=`<h1>قاعات الأفراح</h1><div class="card"><h2 style="margin-top:0">مرحبًا، كمل بـ</h2><button class="btn p" style="width:100%;margin-bottom:8px" onclick="cc()">المتابعة بحساب Claude</button><button class="btn" style="width:100%;margin-bottom:8px" disabled>Gmail – قريبًا</button><button class="btn" style="width:100%;margin-bottom:8px" disabled>Facebook – قريبًا</button><h2>أو بالإيميل (تجريبي)</h2><div class="note">وضع تجريبي: الحسابات تتحفظ في هذا الجهاز فقط. داخل حساب كلود الحقيقي يخدم الدخول بحسابك تلقائيًا.</div><label>الإيميل</label><input id="em" type="email" autocomplete="email"><button class="btn p" style="margin-top:10px;width:100%" onclick="dl()">دخول</button></div>`}
+async function cc(){try{const d=await claude.use("db"),u=await claude.use("user"),v=u&&await u.me();if(d&&v&&v.id){DB=d;demo=false;me={id:v.id,name:v.name||"",email:v.email||""};return start()}}catch(e){}alert("افتح الرابط من داخل claude.ai وأنت داخل بحسابك")}
+function sw(){if(!confirm("تبدل نوع الحساب (صاحب قاعة / زبون)؟"))return;DB.collection("profiles").doc(me.id).delete().then(()=>{prof=null;go("onb")}).catch(()=>alert("ما قدرناش نبدلو الحساب"))}
+function dl(){const e=$("em").value.trim().toLowerCase();if(!/^\S+@\S+\.\S+$/.test(e)){alert("دخل إيميل صحيح");return}try{localStorage.setItem("de",e)}catch(x){}me={id:e,name:"",email:e};start()}
+async function start(){
+ const s=await DB.collection("profiles").doc(me.id).get();
+ prof=s.exists?s.data():null;
+ DB.collection("halls").onSnapshot(q=>{HL=q.docs.map(x=>({...x.data(),id:x.id}));ref()});
+ DB.collection("profiles").onSnapshot(q=>{PF=q.docs.map(x=>({...x.data(),id:x.id}));ref()});
+ DB.collection("bookings").onSnapshot(q=>{BK=q.docs.map(x=>({...x.data(),id:x.id}));ref()});
+ S.v=!prof?"onb":prof.role=="owner"?"ow":prof.role=="admin"?"ad":"home";r();
+}
+function ref(){const a=document.activeElement;if(a&&a.closest&&a.closest("#app")&&/INPUT|SELECT/.test(a.tagName))return;r()}
+function out(){try{localStorage.removeItem("de")}catch(e){}location.reload()}
+
+function r(){
+ if(!S.v)return;
+ let h=`<header><h1>قاعات الأفراح</h1><div class="row"><span class="mut">${esc(prof&&prof.name||me.email)}</span><button class="btn" onclick="tm()" aria-label="تبديل الوضع الليلي">🌓</button></div></header>`;
+ if(prof&&0){h+=`<div class="row" style="margin-bottom:8px">`+`<button class="btn ${S.v=="ow"?"p":""}" onclick="go('ow')">لوحة صاحب القاعة</button><button class="btn ${S.v=="home"||S.v=="hall"?"p":""}" onclick="go('home')">واجهة الزبون</button><button class="btn ${S.v=="my"?"p":""}" onclick="go('my')">حجوزاتي</button>`+`<button class="btn" onclick="sw()">غيّر نوع الحساب</button>`+(demo?`<button class="btn" onclick="out()">خروج</button>`:"")+`</div>`}
+ if(prof)h+=nav2();h+=({onb,ow,home,hall,my,eh,ad}[S.v])();if(prof)h+=foot();
+ $("app").innerHTML=h;
+}
+function go(v){S.v=v;S.sel=null;window.scrollTo(0,0);r()}
+function modal(c){const m=document.createElement("div");m.className="modal";m.id="mo";m.onclick=e=>{if(e.target==m)closeM()};m.innerHTML=`<div>${c}</div>`;document.body.appendChild(m)}
+function closeM(){const m=$("mo");if(m)m.remove()}
+function vid(){modal(`<h2>الفيديو التعريفي</h2><p>هنا يظهر فيديو القاعة، وصاحب القاعة يضيفه لاحقًا.</p><button class="btn p" onclick="closeM()">إغلاق</button>`)}
+
+const FT=["موقف سيارات","تكييف","غرفة العروس","مطبخ مجهز","نظام صوتي (DJ)","مسرح وديكور","واي فاي","كاميرات مراقبة","مدخل لذوي الاحتياجات","قاعة نساء منفصلة","مولد كهربائي","خدمة الطعام (ترويتور)","يسمح بالفرقة الموسيقية","تقديم المشروبات","حراسة وأمن"];
+function hf(h){h=h||{};const f=h.ft||[];return `<label>اسم القاعة</label><input id="hn" value="${esc(h.n)}"><label>الولاية</label><select id="hw">${W.map((w,i)=>`<option value="${i}" ${h.i==i?"selected":""}>${i+1} - ${w}</option>`).join("")}</select>
+<label>العنوان / الحي</label><input id="ha" value="${esc(h.addr)}">
+<label>كم تشد القاعة؟ (عدد الأشخاص)</label><select id="hc">${[300,500,800,1000,1500,2000].map(c=>`<option ${h.cap==c?"selected":""}>${c}</option>`).join("")}</select>
+<label>الأفواج المتاحة</label><select id="hs">${["ليل ونهار","ليل فقط","نهار فقط"].map(c=>`<option ${h.sh==c?"selected":""}>${c}</option>`).join("")}</select>
+<label>سعر كراء القاعة (دج)</label><input id="hp" type="number" value="${h.pr||100000}"><label>سعر العشاء للشخص (دج)</label><input id="hd" type="number" value="${h.dn||600}"><label>سعر الديكور (دج)</label><input id="hx" type="number" value="${h.dc||40000}"><label>العربون المطلوب (دج)</label><input id="hb" type="number" value="${h.dep||20000}">
+<label>الخدمات المتوفرة</label><div class="ck" id="hft">${FT.map(x=>`<label><input type="checkbox" value="${x}" ${f.includes(x)?"checked":""}>${x}</label>`).join("")}</div>
+<label>رابط فيديو القاعة (يوتيوب أو فيسبوك)</label><input id="hv" type="url" value="${esc(h.vid)}">
+<label>ملاحظات للزبائن (شروط الإلغاء، ساعة نهاية العرس…)</label><textarea id="hnt" rows="3">${esc(h.notes)}</textarea>`}
+function hv(){const i=+$("hw").value,v=$("hv").value.trim();return{n:$("hn").value.trim(),w:W[i],i,addr:$("ha").value.trim(),cap:+$("hc").value,sh:$("hs").value,pr:+$("hp").value||0,dn:+$("hd").value||0,dc:+$("hx").value||0,dep:+$("hb").value||0,ft:[...document.querySelectorAll("#hft input:checked")].map(e=>e.value),vid:v.indexOf("http")==0?v:"",notes:$("hnt").value.trim(),owner:me.id}}
+function eh(){const h=HL.find(x=>x.id==me.id)||{};return `<div class="card"><h2 style="margin-top:0">معلومات القاعة</h2>${hf(h)}<button class="btn p" style="margin-top:12px;width:100%" onclick="sh2()">حفظ</button></div>`}
+async function sh2(){const d=hv();if(!d.n){alert("دخل اسم القاعة");return}const h=HL.find(x=>x.id==me.id)||{};try{await DB.collection("halls").doc(me.id).set({...d,ph:h.ph||wa(prof.phone)});go("ow")}catch(e){alert("ما قدرناش نحفظو")}}
+function onb(){return `<div class="card"><h2 style="margin-top:0">كمل حسابك</h2>
+ <label>شكون أنت؟</label><select id="rl" onchange="$('oh').style.display=this.value=='owner'?'block':'none'"><option value="client">زبون (نحوس على قاعة)</option><option value="owner" ${S.pre=="owner"?"selected":""}>صاحب قاعة</option></select>
+ <label>الاسم</label><input id="nm" value="${esc(me.name)}"><label>رقم الهاتف</label><input id="ph" type="tel" inputmode="tel">
+ <div id="oh" style="display:${S.pre=="owner"?"block":"none"}">${hf()}<div style="display:none">
+ <label>السعة (عدد الأشخاص)</label><input id="hc" type="number" value="500"><label>سعر الكراء (دج)</label><input id="hp0" type="number" value="1"></div></div>
+ <button class="btn p" style="margin-top:12px;width:100%" onclick="saveP()">حفظ ودخول</button></div>`}
+async function saveP(){
+ const role=$("rl").value,nm=$("nm").value.trim(),ph=$("ph").value.trim();
+ if(!nm||ph.replace(/\D/g,"").length<9){alert("دخل الاسم ورقم هاتف صحيح");return}
+ prof={role,name:nm,phone:ph,email:me.email};
+ if(role=="owner"){const hn=$("hn").value.trim();if(!hn){alert("دخل اسم القاعة");return}const i=+$("hw").value;
+  await DB.collection("halls").doc(me.id).set({...hv(),ph:wa(ph)})}
+ await DB.collection("profiles").doc(me.id).set(prof);
+ go(role=="owner"?"ow":"home");
+}
+
+function cal(h,mode){
+ const t=new Date();t.setHours(0,0,0,0);
+ const off=(new Date(S.y,S.m,1).getDay()+1)%7,dim=new Date(S.y,S.m+1,0).getDate();
+ let c=["سبت","أحد","إثنين","ثلاثاء","أربعاء","خميس","جمعة"].map(d=>`<b>${d}</b>`).join("")+"<span></span>".repeat(off);
+ for(let d=1;d<=dim;d++){const s=ds(S.y,S.m,d),past=new Date(S.y,S.m,d)<t,q=(past&&mode=="c")?"x":st(h,s,d,S.m),ok=mode=="o"?true:q=="f";
+  c+=`<button class="d ${q} ${S.sel==s?"sel":""}" ${ok?`onclick="pick('${s}')"`:"disabled"} aria-label="${d} ${MN[S.m]}">${d}</button>`}
+ return `<div class="card"><div class="row"><button class="btn" onclick="nav(-1)" aria-label="الشهر السابق">›</button><b>${MN[S.m]} ${S.y}</b><button class="btn" onclick="nav(1)" aria-label="الشهر القادم">‹</button></div>
+ <div class="lg"><span><i style="background:var(--g)"></i>متاح</span><span><i style="background:var(--o)"></i>في الانتظار</span><span><i style="background:var(--r)"></i>مؤكد</span></div><div class="cal">${c}</div></div>`}
+function nav(d){S.m+=d;if(S.m<0){S.m=11;S.y--}if(S.m>11){S.m=0;S.y++}S.sel=null;r()}
+function pick(s){S.sel=s;r();setTimeout(()=>{const e=$("fm")||$("dd");e&&e.scrollIntoView({behavior:"smooth"})},50)}
+
+/* ---- owner ---- */
+function ow(){
+ if(prof.role!="owner")return `<div class="card"><h2 style="margin-top:0">ما عندكش قاعة مسجلة</h2><p class="mut">حسابك الحالي حساب زبون. سجل قاعتك باش تظهرلك لوحة الإدارة.</p><button class="btn p" onclick="sw()">سجل كصاحب قاعة</button></div>`;
+ const M=BK.filter(b=>b.hallId==me.id).sort((a,b)=>a.date<b.date?-1:1),C=M.filter(b=>b.st=="b"),P=M.filter(b=>b.st=="p"),td=M.find(b=>b.date==TODAY);
+ const sum=(a,f)=>a.reduce((n,b)=>n+f(b),0);
+ const dd=S.sel?(bk(me.id,S.sel)?`<div id="dd">`+item(bk(me.id,S.sel))+`</div>`:`<div class="card" id="dd">يوم ${S.sel}: فارغ، ما كاين حتى حجز.</div>`):"";
+ return `<div class="sq">
+ <div class="t"><span>اليوم ${TODAY}</span><b>${td?esc(td.name)+" – "+td.shift:"القاعة فارغة اليوم"}</b><span>${td?(td.st=="b"?"الحجز مؤكد":"الحجز في الانتظار"):""}</span></div>
+ <div><span class="mut">حجوزات مؤكدة</span><b>${C.length}</b></div>
+ <div><span class="mut">في انتظار العربون</span><b style="color:var(--o)">${P.length}</b></div>
+ <div><span class="mut">مداخيل مؤكدة</span><b>${fm(sum(C,b=>b.total))}</b></div>
+ <div><span class="mut">العربون المقبوض</span><b>${fm(sum(M,b=>b.avance))}</b></div>
+ <div style="grid-column:1/-1;aspect-ratio:auto"><span class="mut">المتبقي عند الزبائن (المؤكدة)</span><b>${fm(sum(C,b=>b.total-b.avance))}</b></div></div>
+ <div class="row"><h2>تقويم القاعة</h2><button class="btn" onclick="go('eh')">✏️ معلومات القاعة</button></div>${cal(me.id,"o")}${dd}
+ <h2>كل الحجوزات (${M.length})</h2>${M.length?M.map(item).join(""):`<p class="mut">ما كاين حتى حجز. طلبات الزبائن تظهر هنا مباشرة.</p>`}`;
+}
+function item(o){return `<div class="card"><div class="row"><b>${esc(o.name)}</b><span class="tag" style="background:var(--${o.st=="b"?"r":"o"})">${o.st=="b"?"مؤكد":"في الانتظار"}</span></div>
+ <div class="mut">${o.date} · ${o.shift} · ${esc(o.occ)} · ${esc(o.phone)}</div>
+ <div class="row" style="margin-top:6px"><div style="flex:1"><label>الإجمالي</label><input type="number" value="${o.total}" onchange="up('${o.id}','total',this.value)"></div><div style="flex:1"><label>العربون</label><input type="number" value="${o.avance}" onchange="up('${o.id}','avance',this.value)"></div></div>
+ <p>المتبقي: <b>${fm(o.total-o.avance)}</b></p>
+ <div class="row"><button class="btn p" onclick="tg('${o.id}')">${o.st=="b"?"رجّعه للانتظار":"أكد الحجز"}</button><button class="btn" onclick="rc('${o.id}')">وصل PDF</button><button class="btn" onclick="del('${o.id}')">إلغاء</button></div></div>`}
+const upd=(id,d)=>DB.collection("bookings").doc(id).update(d).catch(()=>alert("ما تقدرش تعدل هذا الحجز"));
+function up(id,k,v){upd(id,{[k]:Math.max(0,+v||0)})}
+function tg(id){const o=BK.find(b=>b.id==id);upd(id,{st:o.st=="b"?"p":"b"})}
+function del(id){if(confirm("تلغي هذا الحجز؟"))DB.collection("bookings").doc(id).delete().catch(()=>alert("ما تقدرش تلغي هذا الحجز"))}
+function rc(id){
+ const o=BK.find(b=>b.id==id),x=hallOf(o.hallId)||{};
+ modal(`<div id="rcb"><h2 style="margin-top:0">وصل حجز</h2><p><b>${esc(x.n)}</b> – ولاية ${esc(x.w)}</p><p>الزبون: ${esc(o.name)} (${esc(o.phone)})<br>التاريخ: ${o.date} · ${o.shift} · ${esc(o.occ)}<br>الحالة: ${o.st=="b"?"مؤكد":"في الانتظار"}</p><p>الإجمالي: ${fm(o.total)}<br>العربون: ${fm(o.avance)}<br><b>المتبقي: ${fm(o.total-o.avance)}</b></p></div><div class="row np"><button class="btn p" onclick="pr()">طباعة / حفظ PDF</button><button class="btn" onclick="closeM()">إغلاق</button></div>`);
+}
+function pr(){const m=$("mo"),R=$("rc");R.innerHTML="";R.appendChild($("rcb").cloneNode(true));R.style.display="block";m.style.display="none";window.print();m.style.display="";R.style.display="none"}
+
+/* ---- client ---- */
+const LOGO="";
+const logo=()=>LOGO?`<img src="${LOGO}" alt="" style="height:64px">`:"💍";
+function nav2(){const O=prof.role=="owner",b=(v,t,on)=>`<button class="btn ${on?"p":""}" onclick="go('${v}')">${t}</button>`;return `<div class="row" style="margin-bottom:8px">`+(prof.role=="admin"?b("ad","لوحة المشرف",S.v=="ad")+b("home","معاينة واجهة الزبون",S.v=="home"||S.v=="hall"):O?b("ow","لوحة القاعة",S.v=="ow"||S.v=="eh")+b("home","معاينة واجهة الزبون",S.v=="home"||S.v=="hall"):b("home","الرئيسية",S.v=="home"||S.v=="hall")+b("my","حجوزاتي",S.v=="my"))+`</div>`}
+function foot(){return `<div style="margin:28px 0 8px;text-align:center"><button class="btn" onclick="sw()">غيّر نوع الحساب</button> <button class="btn" onclick="out()">تسجيل الخروج</button></div>`}
+function srch(){S.dt=$("dt").value;S.wi=$("wl").value;if(!S.dt||S.wi===""){alert("اختر التاريخ والولاية");return}S.q=1;r()}
+function pk2(id){S.h=id;const d=new Date(S.dt+"T00:00:00");S.y=d.getFullYear();S.m=d.getMonth();S.v="hall";S.sel=S.dt;window.scrollTo(0,0);r()}
+function home(){
+ const ok=S.q&&S.wi!==""&&S.dt;let L=[];
+ if(ok){const d=new Date(S.dt+"T00:00:00");L=allH().filter(x=>x.i==S.wi&&st(x.id,S.dt,d.getDate(),d.getMonth())=="f")}
+ return `<div class="hero"><div class="lg0">${logo()}</div><h2>احجز قاعة عرسك بسهولة</h2><p>اختر التاريخ والولاية، ونوريك القاعات المتاحة</p></div>
+ <div class="card"><label for="dt">1. تاريخ المناسبة</label><input id="dt" type="date" min="${TODAY}" value="${S.dt||""}">
+ <label for="wl">2. الولاية</label><select id="wl"><option value="">— اختر الولاية —</option>${W.map((w,i)=>`<option value="${i}" ${S.wi!==""&&S.wi==i?"selected":""}>${i+1} - ${w}</option>`).join("")}</select>
+ <button class="btn p" style="margin-top:12px;width:100%" onclick="srch()">ابحث عن قاعة</button></div>`+(ok?`<h2>${L.length} قاعة متاحة يوم ${S.dt} في ${W[S.wi]}</h2>`+(L.length?L.map(x=>`<div class="card"><div class="vid" onclick="vid()">▶ فيديو تعريفي</div><div class="row"><b>${esc(x.n)}</b><span class="mut">${x.cap} شخص</span></div><div class="mut">ابتداءً من ${fm(x.pr)}</div><button class="btn p" style="margin-top:10px" onclick="pk2('${x.id}')">اختر هذه القاعة</button></div>`).join(""):`<p class="mut">ما كاينش قاعات متاحة في هذا اليوم. جرب تاريخ آخر.</p>`):"")}
+function home0(){
+ const L=S.wi===""?[]:allH().filter(x=>x.i==S.wi);
+ return `<label for="wl">اختر الولاية اللي راك فيها</label>
+ <select id="wl" onchange="S.wi=this.value;r()"><option value="">— اختر الولاية —</option>${W.map((w,i)=>`<option value="${i}" ${S.wi==i&&S.wi!==""?"selected":""}>${i+1} - ${w}</option>`).join("")}</select>
+ ${S.wi===""?`<p class="mut">اختر ولاية باش تظهرلك كامل القاعات.</p>`:`<h2>${L.length} قاعات في ولاية ${W[S.wi]}</h2>`+L.map(x=>`<div class="card"><div class="vid" onclick="vid()">▶ فيديو تعريفي</div><div class="row"><b>${esc(x.n)}</b><span class="mut">${x.cap} شخص</span></div><div class="mut">ابتداءً من ${fm(x.pr)}</div><button class="btn p" style="margin-top:10px" onclick="S.h='${x.id}';go('hall')">شوف المواعيد واحجز</button></div>`).join("")}`;
+}
+function hall(){
+ const x=hallOf(S.h);if(!x){S.v="home";return home()}
+ return `<button class="btn" onclick="go('home')">← رجوع</button><h2 style="margin-bottom:0">${esc(x.n)}</h2><div class="mut">ولاية ${esc(x.w)}${x.addr?" · "+esc(x.addr):""} · ${x.cap} شخص${x.sh?" · "+esc(x.sh):""}</div>${x.ft&&x.ft.length?`<div class="ck" style="margin-top:8px">${x.ft.map(f=>`<span class="tag" style="background:var(--pri);color:var(--onpri)">${esc(f)}</span>`).join("")}</div>`:""}${x.vid?`<p><a href="${esc(x.vid)}" target="_blank" rel="noopener">▶ شاهد الفيديو التعريفي</a></p>`:""}${x.notes?`<div class="note">${esc(x.notes)}</div>`:""}${x.dep?`<div class="mut">العربون المطلوب: ${fm(x.dep)}</div>`:""}
+ <h2>الباقات</h2><div class="card"><div class="pk"><span>كراء الصالة فقط</span><b>${fm(x.pr)}</b></div><div class="pk"><span>صالة + عشاء</span><b>${fm(x.pr+x.cap*(x.dn||600))}</b></div><div class="pk" style="border:0"><span>صالة + ديكور</span><b>${fm(x.pr+(x.dc||40000))}</b></div></div>
+ <h2>المواعيد</h2>${cal(x.id,"c")}
+ ${S.sel?`<div class="card" id="fm"><h2 style="margin-top:0">حجز ليوم ${S.sel}</h2>
+ <label>الفوج</label><select id="sh"><option>ليل</option><option>نهار</option></select>
+ <label>نوع المناسبة</label><select id="oc"><option>عرس</option><option>خطوبة</option><option>ختان</option><option>أخرى</option></select>
+ <label>الاسم</label><input id="nm" value="${esc(prof.name)}"><label>الهاتف</label><input id="ph" type="tel" value="${esc(prof.phone)}">
+ <button class="btn p" style="margin-top:12px;width:100%" onclick="book()">ابعث طلب الحجز</button></div>`:`<p class="mut">اضغط على يوم أخضر باش تحجز.</p>`}`;
+}
+async function book(){
+ const n=$("nm").value.trim(),p=$("ph").value.trim(),x=hallOf(S.h),s=S.sel;
+ if(!n||p.replace(/\D/g,"").length<9){alert("دخل الاسم ورقم هاتف صحيح");return}
+ if(bk(x.id,s)){alert("هذا اليوم تحجز قبل شوية");return}
+ const sh=$("sh").value,oc=$("oc").value;
+ try{await DB.collection("bookings").doc(x.id+"_"+s).set({hallId:x.id,clientId:me.id,date:s,shift:sh,occ:oc,name:n,phone:p,st:"p",total:x.pr,avance:0})}catch(e){alert("ما قدرناش نسجلو الحجز. تأكد أن حسابك يسمحلك بالكتابة.");return}
+ S.sel=null;r();
+ modal(`<h2>وصلنا طلبك</h2><p>الحجز مبدئي حتى تدفع العربون. تواصل مع صاحب القاعة باش تأكد.</p><a class="btn p" style="display:block;text-align:center;text-decoration:none;margin-bottom:8px" href="https://wa.me/${x.ph}?text=${encodeURIComponent("السلام عليكم، حجزت قاعة "+x.n+" يوم "+s+" ("+sh+") - "+n)}" target="_blank" rel="noopener">أكد عبر واتساب</a><button class="btn" style="width:100%" onclick="closeM()">إغلاق</button>`);
+}
+function my(){
+ const M=BK.filter(b=>b.clientId==me.id).sort((a,b)=>a.date<b.date?-1:1);
+ return `<h2>حجوزاتي (${M.length})</h2>`+(M.length?M.map(o=>{const x=hallOf(o.hallId)||{};return `<div class="card"><div class="row"><b>${esc(x.n)}</b><span class="tag" style="background:var(--${o.st=="b"?"g":"o"})">${o.st=="b"?"الحجز مؤكد":"في انتظار العربون"}</span></div><div class="mut">ولاية ${esc(x.w)} · ${o.date} · ${o.shift} · ${esc(o.occ)}</div><p>الإجمالي: ${fm(o.total)}<br>العربون المدفوع: ${fm(o.avance)}<br><b>المتبقي: ${fm(o.total-o.avance)}</b></p><div class="row"><button class="btn" onclick="rc('${o.id}')">وصل</button><button class="btn" onclick="del('${o.id}')">إلغاء الطلب</button></div></div>`}).join(""):`<p class="mut">ما عندك حتى حجز. اختر قاعة وموعد.</p>`);
+}
+function tm(){const c=document.documentElement,d=(c.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"))=="dark"?"light":"dark";c.dataset.theme=d;try{localStorage.setItem("th",d)}catch(e){}}
+try{const t=localStorage.getItem("th");if(t)document.documentElement.dataset.theme=t}catch(e){}
+setTimeout(()=>{const s=$("sp");if(s){s.classList.add("o");setTimeout(()=>s.remove(),700)}},2000);
+boot();
+</script>
+<script>if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{})</script>
+</body>
+</html>
